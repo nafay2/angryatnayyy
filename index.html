@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#2b0f1e">
+<meta name="theme-color" content="#ffd9ea">
 <title>Angry at Nay</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%98%A4%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -153,7 +153,6 @@ body.t-fighter[data-lv="4"]{--heat1:#6e1c7e;--heat2:#0c0624}
 body.t-fighter[data-lv="5"]{--heat1:#99145f;--heat2:#100420}
 body.t-storm,body.t-lava,body.t-fighter{--txt:var(--ink)}
 body.t-storm[data-lv],body.t-lava[data-lv],body.t-fighter[data-lv]{--txt:var(--ink)}
-.themeBtn{position:fixed;left:50%;bottom:max(10px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:300;padding:8px 14px;border-radius:999px;font-size:12.5px;font-weight:700;white-space:nowrap;background:#fff;color:#2b0f1e;border:2px solid #2b0f1e}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -392,12 +391,7 @@ function reset() {
   $('#nay').classList.remove('ko'); $('#marks').innerHTML = ''; $$('.stuck,.over').forEach(x => x.remove()); setFace(level >= 4 ? 'scared' : 'calm'); drawTray();
 }
 drawLevels(); drawTray();
-const THEMES = [['comic', 'Comic pop'], ['storm', 'Storm cloud'], ['candy', 'Candy cute'], ['lava', 'Lava'], ['fighter', 'Arcade fighter']];
-let themeI = Math.max(0, THEMES.findIndex(t => t[0] === new URLSearchParams(location.search).get('theme')));
-function setTheme(i) { themeI = i; document.body.className = THEMES[i][0] === 'comic' ? '' : 't-' + THEMES[i][0]; }
-setTheme(themeI);
-(function () { const b = document.createElement('button'); b.className = 'themeBtn'; b.textContent = '🎨 ' + THEMES[themeI][1];
-  b.onclick = () => { setTheme((themeI + 1) % THEMES.length); b.textContent = '🎨 ' + THEMES[themeI][1]; }; document.body.appendChild(b); })();
+document.body.classList.add('t-candy');
 
 /* ---------- roast ---------- */
 const ROASTS = [
