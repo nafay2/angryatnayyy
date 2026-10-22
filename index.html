@@ -315,44 +315,44 @@ const WEAPONS = [
 ];
 const SAYS = {
   "1": [
-    "ow. that was soft. like you.",
-    "a teddy?? you're too nice to be mad",
-    "is this a warning shot",
-    "this is basically a hug with extra steps",
-    "I'll allow it. I deserved it.",
-    "okay that one hurt my feelings, not my head"
+    "HAHA okay okay, I deserved that",
+    "a teddy? that's a hug with extra steps",
+    "is that it? (please let that be it)",
+    "ow. my dignity.",
+    "soft. very soft. thank you.",
+    "I felt nothing. I'm lying. I felt it."
   ],
   "2": [
-    "THE CHAPPAL. every desi kid's worst nightmare",
-    "okay so you ARE mad",
-    "that tomato was innocent",
-    "I said sorry in my head, does that count?",
-    "please, not the glasses",
-    "your aim is scary good"
+    "THE CHAPPAL. the ultimate weapon",
+    "okay so you're actually mad",
+    "that tomato had a family",
+    "not the glasses!",
+    "your aim is scary good",
+    "calling my lawyer. he's also scared of you."
   ],
   "3": [
-    "the BELAN?? who taught you that",
-    "I'm sorry, princess, I'm so sorry",
+    "the BELAN?? that's a kitchen tool, not a weapon!",
+    "I'm sorry, I'm so sorry",
     "my ego just left the chat",
-    "I'll never do it again. whatever it was.",
-    "there's egg in my hair now. fair.",
-    "this is fine. everything is fine."
+    "there's egg in my hair now",
+    "this is fine. everything is fine.",
+    "I'll never do it again. whatever it was."
   ],
   "4": [
-    "I can see stars. they all look like you.",
-    "called Hades for backup. he said no.",
-    "I take back everything I said. even the good stuff.",
+    "I can see stars. and a few planets.",
     "a PHYSICS book? that's two kinds of pain",
     "my glasses saw that coming. I didn't.",
-    "okay this is fair. this is very fair."
+    "I take it back. all of it.",
+    "is this what they call tough love?",
+    "okay this is fair. extremely fair."
   ],
   "5": [
     "I SURRENDER",
-    "tell Percy I love him",
-    "I'm sorry I'm sorry I'm sorry",
-    "my last words: you look really pretty when you're mad",
+    "SORRY SORRY SORRY",
     "a BOWLING BALL?? I'm a person, not a pin",
-    "write on my grave: he deserved it"
+    "write on my grave: he deserved it",
+    "writing my will. you get everything.",
+    "last words: you look really pretty when you're mad"
   ]
 };
 const KNIFE = ['she MISSED. on purpose. right?? RIGHT??', 'that was too close, princess', 'okay I will never argue again', 'I felt the wind of that one'];
@@ -445,44 +445,44 @@ setTheme(themeI);
 
 /* ---------- roast ---------- */
 const ROASTS = [
-  "Nafay laughs at his own joke for two minutes. The joke was four seconds long.",
-  "His volume has two settings: loud and louder.",
-  "He says \"I'm not overthinking\" and then sends six paragraphs.",
-  "He said \"five more minutes\" sometime last year. Still waiting.",
-  "His \"quick question\" has never once been quick.",
-  "He says \"trust me\" right before being wrong.",
-  "He'll argue for twenty minutes and then say \"I wasn't even arguing\".",
-  "He says he's a good listener. Ask him what you said yesterday.",
-  "His apologies arrive in three to five business days.",
-  "He has two moods: way too hyper and way too sleepy. Nothing in between.",
-  "He thinks one sorry covers three mistakes. Bundle deal.",
-  "He says \"I'm on my way\" before he's even found his charger.",
-  "He texts \"k\" and then wonders why you're mad.",
-  "Percy listens better than him. Percy is a baby cat.",
-  "He thinks he's the main character. He's the comic relief.",
-  "If overconfidence was a degree, he'd have a PhD.",
-  "He has never once won an argument with you. He just thinks he did.",
-  "He's lucky he's cute-ish. The -ish is doing a lot of work.",
-  "He says \"I'll sleep early\" every night. It's a running joke now.",
-  "He calls it \"being honest\". Everyone else calls it being annoying."
+  "Nafay is so slow, he took two hours to watch 60 Minutes.",
+  "Nafay tried to catch fog. He mist.",
+  "Nafay's brain has two tabs open and both are still loading.",
+  "Nafay went to a mind reader. She gave him a refund.",
+  "Nafay told a joke about construction. He's still working on it.",
+  "Nafay stared at an orange juice carton for an hour because it said \"concentrate\".",
+  "Nafay brought a ladder to the party because he heard drinks were on the house.",
+  "Nafay put his phone in rice to fix his personality.",
+  "Nafay got lost in a revolving door. Twice.",
+  "Nafay's wifi password is \"incorrect\". He still gets it wrong.",
+  "Nafay is the reason shampoo bottles have instructions.",
+  "Nafay is so bad at hide and seek, even the furniture found him.",
+  "Nafay climbed a glass wall to see what was on the other side.",
+  "Nafay's cooking is so bad, the smoke alarm cheers him on.",
+  "Nafay made a belt out of watches. It was a waist of time.",
+  "Nafay got fired from the calendar factory for taking a day off.",
+  "Nafay put a clock under his desk so he could work overtime.",
+  "Nafay's jokes are like dad jokes, just without the dad.",
+  "Nafay thought \"FAQ\" was a type of fish.",
+  "Nafay is like a cloud. When he disappears, it's a beautiful day."
 ];
 let ri = Math.floor(Math.random() * ROASTS.length);
 $('#roastBtn').onclick = () => { const l = $('#roastLine'); l.animate([{ transform: 'scale(.8) rotate(-3deg)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 300, easing: 'cubic-bezier(.3,1.6,.5,1)' }); l.textContent = ROASTS[ri++ % ROASTS.length]; };
 
 /* ---------- excuses ---------- */
 const EXCUSES = [
-  "My phone was on silent. For six hours. Purely by accident. Totally.",
-  "I wasn't ignoring you, I was building suspense.",
-  "I didn't forget. I was just remembering it later.",
-  "It was Percy. Percy has my phone. Percy typed \"ok\".",
-  "My \"hmm\" was a deep, emotional hmm. You just didn't hear the emotion.",
-  "I fell asleep mid-reply. My thumb kept typing in my dreams.",
-  "Technically I was right. But I'd rather be forgiven than right. Please.",
-  "The network was bad. Specifically, my brain's network.",
-  "That \"ok\" was a loving ok. It had a whole heart inside it.",
-  "I was busy at work. Work is not prettier than you. Terrible excuse, I know.",
-  "I was going to say sorry first, but then I... no. Okay. I'm sorry.",
-  "In my defence... I have no defence. Please accept this sorry instead."
+  "Sorry, a pigeon stole my phone.",
+  "I was busy teaching a fish to climb a tree.",
+  "Aliens abducted me. They sent me back. They said I was too annoying.",
+  "My horoscope said to stay quiet today.",
+  "I was stuck in traffic. On the sofa.",
+  "My phone fell into a parallel universe.",
+  "I accidentally joined a dance competition. I lost.",
+  "A goat ate my phone. And my sense of time.",
+  "I was counting the stars. I got to seven.",
+  "Gravity was extra strong today. I couldn't lift my phone.",
+  "I was in airplane mode. Emotionally.",
+  "No excuse. Just sorry. And a little bit scared."
 ];
 let ei = 0; $('#excuse').textContent = EXCUSES[0];
 function nextExcuse() { ei = (ei + 1) % EXCUSES.length; const s = $('#stamp'); s.classList.remove('show'); s.textContent = 'REJECTED'; s.style.color = s.style.borderColor = ''; $('#excuse').textContent = EXCUSES[ei]; }
