@@ -314,11 +314,46 @@ const WEAPONS = [
   { lv: 5, name: 'knife', icon: '🔪', dmg: 0, snd: 'thunk', pow: 'THUNK', knife: true }
 ];
 const SAYS = {
-  1: ['ow. that was soft. like you.', 'okay okay, I deserved that one', 'is this a pillow fight or are you mad', "that didn't hurt. emotionally it did."],
-  2: ['OUCH. the chappal. classic.', 'okay you are actually mad', 'I said sorry in my head, does that count', 'please, not the face'],
-  3: ['the BELAN?? who taught you that', 'I am sorry, princess, I am so sorry', 'my ego is in danger', 'I will never do it again. whatever it was.'],
-  4: ['I can see stars. and they look like you.', 'calling Hades for backup... he declined', 'I take back everything I said', 'this is fair. this is very fair.'],
-  5: ['I SURRENDER', 'tell Percy I loved him', "I'm sorry I'm sorry I'm sorry", 'my last words: you look pretty when you are mad']
+  "1": [
+    "ow. that was soft. like you.",
+    "a teddy?? you're too nice to be mad",
+    "is this a warning shot",
+    "this is basically a hug with extra steps",
+    "I'll allow it. I deserved it.",
+    "okay that one hurt my feelings, not my head"
+  ],
+  "2": [
+    "THE CHAPPAL. every desi kid's worst nightmare",
+    "okay so you ARE mad",
+    "that tomato was innocent",
+    "I said sorry in my head, does that count?",
+    "please, not the glasses",
+    "your aim is scary good"
+  ],
+  "3": [
+    "the BELAN?? who taught you that",
+    "I'm sorry, princess, I'm so sorry",
+    "my ego just left the chat",
+    "I'll never do it again. whatever it was.",
+    "there's egg in my hair now. fair.",
+    "this is fine. everything is fine."
+  ],
+  "4": [
+    "I can see stars. they all look like you.",
+    "called Hades for backup. he said no.",
+    "I take back everything I said. even the good stuff.",
+    "a PHYSICS book? that's two kinds of pain",
+    "my glasses saw that coming. I didn't.",
+    "okay this is fair. this is very fair."
+  ],
+  "5": [
+    "I SURRENDER",
+    "tell Percy I love him",
+    "I'm sorry I'm sorry I'm sorry",
+    "my last words: you look really pretty when you're mad",
+    "a BOWLING BALL?? I'm a person, not a pin",
+    "write on my grave: he deserved it"
+  ]
 };
 const KNIFE = ['she MISSED. on purpose. right?? RIGHT??', 'that was too close, princess', 'okay I will never argue again', 'I felt the wind of that one'];
 let level = 1, sel = 0, ego = 100, hits = 0, ko = false;
@@ -377,7 +412,7 @@ function impact(w, x, y) {
     m.style.left = rand(28, 92) + 'px'; m.style.top = rand(28, 90) + 'px'; m.style.transform = `rotate(${rand(-40, 40)}deg)`; $('#marks').appendChild(m);
     if ($$('.mark').length > 7) $('.mark').remove();
   }
-  say(pick(SAYS[w.lv]));
+  say(pick(SAYS[String(w.lv)]));
   if (ego <= 0) knockout();
 }
 
@@ -410,37 +445,44 @@ setTheme(themeI);
 
 /* ---------- roast ---------- */
 const ROASTS = [
-  "Nafay's jokes: 10% funny, 90% him laughing at them.",
-  'He says "I\'ll sleep early." He has never once slept early.',
-  'He thinks he is mysterious. He is not. He is very readable.',
-  'He says "I\'m almost there" while still lying in bed.',
-  'He types "hahaha" with a completely straight face.',
-  'He talks so loud the neighbours know your business.',
-  'He says "two minutes" and means forty.',
-  'Nafay running a business: impressive. Nafay understanding a hint: never.',
-  'He says "I\'m not mad" in the most mad voice possible.',
-  'He thinks he is always right. He has been right maybe twice.',
-  'He will overthink one text for an hour and then send "ok".',
-  'Percy has more chill than him.',
-  'He laughs at his own jokes before he finishes telling them.',
-  'He calls himself smart. He forgot what he did wrong already.',
-  'He is lucky you are this pretty, because his excuses are not.'
+  "Nafay laughs at his own joke for two minutes. The joke was four seconds long.",
+  "His volume has two settings: loud and louder.",
+  "He says \"I'm not overthinking\" and then sends six paragraphs.",
+  "He said \"five more minutes\" sometime last year. Still waiting.",
+  "His \"quick question\" has never once been quick.",
+  "He says \"trust me\" right before being wrong.",
+  "He'll argue for twenty minutes and then say \"I wasn't even arguing\".",
+  "He says he's a good listener. Ask him what you said yesterday.",
+  "His apologies arrive in three to five business days.",
+  "He has two moods: way too hyper and way too sleepy. Nothing in between.",
+  "He thinks one sorry covers three mistakes. Bundle deal.",
+  "He says \"I'm on my way\" before he's even found his charger.",
+  "He texts \"k\" and then wonders why you're mad.",
+  "Percy listens better than him. Percy is a baby cat.",
+  "He thinks he's the main character. He's the comic relief.",
+  "If overconfidence was a degree, he'd have a PhD.",
+  "He has never once won an argument with you. He just thinks he did.",
+  "He's lucky he's cute-ish. The -ish is doing a lot of work.",
+  "He says \"I'll sleep early\" every night. It's a running joke now.",
+  "He calls it \"being honest\". Everyone else calls it being annoying."
 ];
 let ri = Math.floor(Math.random() * ROASTS.length);
 $('#roastBtn').onclick = () => { const l = $('#roastLine'); l.animate([{ transform: 'scale(.8) rotate(-3deg)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 300, easing: 'cubic-bezier(.3,1.6,.5,1)' }); l.textContent = ROASTS[ri++ % ROASTS.length]; };
 
 /* ---------- excuses ---------- */
 const EXCUSES = [
-  'My phone was on silent. For six hours. By accident.',
-  'I was going to reply but then I fell asleep at 4am. Very responsible.',
-  "I didn't mean it like that. I meant it in a different, better way.",
-  'Technically I was right, but I am choosing peace. Please choose peace.',
-  'It was Percy. Percy typed that message.',
-  'I was busy with work. Work is not prettier than you though. Bad excuse.',
-  'I forgot, but only because my brain was full of thoughts about you.',
-  "I said 'hmm' because I was thinking. Deeply. About you.",
-  'The internet was bad. In my head.',
-  'I am sorry. That is not an excuse. That is just the truth.'
+  "My phone was on silent. For six hours. Purely by accident. Totally.",
+  "I wasn't ignoring you, I was building suspense.",
+  "I didn't forget. I was just remembering it later.",
+  "It was Percy. Percy has my phone. Percy typed \"ok\".",
+  "My \"hmm\" was a deep, emotional hmm. You just didn't hear the emotion.",
+  "I fell asleep mid-reply. My thumb kept typing in my dreams.",
+  "Technically I was right. But I'd rather be forgiven than right. Please.",
+  "The network was bad. Specifically, my brain's network.",
+  "That \"ok\" was a loving ok. It had a whole heart inside it.",
+  "I was busy at work. Work is not prettier than you. Terrible excuse, I know.",
+  "I was going to say sorry first, but then I... no. Okay. I'm sorry.",
+  "In my defence... I have no defence. Please accept this sorry instead."
 ];
 let ei = 0; $('#excuse').textContent = EXCUSES[0];
 function nextExcuse() { ei = (ei + 1) % EXCUSES.length; const s = $('#stamp'); s.classList.remove('show'); s.textContent = 'REJECTED'; s.style.color = s.style.borderColor = ''; $('#excuse').textContent = EXCUSES[ei]; }
