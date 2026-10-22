@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2b0f1e">
+<title>Angry at Nay</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%98%A4%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2b0f1e; --cream:#fff4ea; --yolk:#ffd23f; --pink:#ff6fa3; --hot:#ff3b5c;
+  --heat1:#ffb3c7; --heat2:#ff7a9c;
+  --comic:'Bangers',Impact,sans-serif; --body:'Outfit',system-ui,sans-serif; --hand:'Caveat',cursive;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;color:var(--ink);font-family:var(--body);overflow-x:hidden}
+body{min-height:100dvh;background:
+  radial-gradient(circle at 1px 1px,rgba(43,15,30,.13) 1.4px,transparent 1.6px) 0 0/14px 14px,
+  radial-gradient(120% 70% at 50% 0%,var(--heat1),var(--heat2));transition:background .6s}
+body[data-lv="1"]{--heat1:#fff1c9;--heat2:#ffc9a8}
+body[data-lv="2"]{--heat1:#ffd9b3;--heat2:#ff9f8a}
+body[data-lv="3"]{--heat1:#ffb59b;--heat2:#ff6f6f}
+body[data-lv="4"]{--heat1:#ff8a7a;--heat2:#e8344f}
+body[data-lv="5"]{--heat1:#ff5a4f;--heat2:#9e0f2c}
+body[data-lv="5"] .title,body[data-lv="5"] .lvName{animation:rumble .25s linear infinite}
+@keyframes rumble{25%{transform:translate(.6px,-.6px)}75%{transform:translate(-.6px,.6px)}}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+body[data-lv="4"],body[data-lv="5"]{--txt:#fff4ea}
+.wrap>p,section>.h2,section>p,.lvName{color:var(--txt,var(--ink));transition:color .6s}
+button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.hidden{display:none!important}
+.wrap{max-width:520px;margin:0 auto;padding:22px 16px 50px}
+.box{background:var(--cream);border:3px solid var(--ink);border-radius:18px;box-shadow:5px 5px 0 var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:700;font-size:15px;background:var(--yolk);border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+.btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+.btn.pink{background:var(--pink);color:#fff}
+.title{font-family:var(--comic);font-weight:400;letter-spacing:.02em;line-height:.95;margin:0;color:#fff;-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;text-shadow:4px 4px 0 var(--ink)}
+.h2{font-family:var(--comic);font-size:30px;letter-spacing:.02em;margin:0;line-height:1}
+section{margin-top:26px}
+
+/* ---------- PIN ---------- */
+#lock{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 16px;background:
+  radial-gradient(circle at 1px 1px,rgba(43,15,30,.13) 1.4px,transparent 1.6px) 0 0/14px 14px,radial-gradient(120% 70% at 50% 0%,#ffd9b3,#ff7a9c)}
+.dots{display:flex;gap:16px;margin:18px 0 6px}
+.dots i{width:16px;height:16px;border-radius:50%;border:3px solid var(--ink);background:var(--cream)}
+.dots i.on{background:var(--hot)}
+.dots.bad{animation:shake .4s}.dots.good i{background:#5fd39a}
+@keyframes shake{20%{transform:translateX(-10px)}40%{transform:translateX(10px)}60%{transform:translateX(-7px)}80%{transform:translateX(7px)}}
+.pad{display:grid;grid-template-columns:repeat(3,66px);gap:12px;justify-content:center;margin-top:8px}
+.key{width:66px;height:66px;border-radius:50%;font-family:var(--comic);font-size:28px;background:var(--cream);border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.key:active{transform:translate(3px,3px);box-shadow:none}
+.msg{min-height:22px;font-weight:600}
+.bubble{position:relative;padding:9px 14px;border-radius:16px;background:#fff;border:3px solid var(--ink);font-size:14px;font-weight:600;max-width:260px;animation:pop .3s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(.5);opacity:0}}
+
+/* ---------- levels ---------- */
+.levels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:14px}
+.lv{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 2px 8px;border-radius:14px;background:var(--cream);border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transition:transform .15s}
+.lv .e{font-size:28px;line-height:1}
+.lv small{font-size:10.5px;font-weight:700;line-height:1.1;text-align:center}
+.lv.on{background:var(--yolk);transform:translateY(-4px) rotate(-2deg)}
+.meter{margin-top:14px;height:20px;border-radius:999px;border:3px solid var(--ink);background:var(--cream);overflow:hidden}
+.meter i{display:block;height:100%;width:20%;background:linear-gradient(90deg,#ffd23f,#ff8a3c,#ff3b5c,#b0002a);background-size:520px 100%;transition:width .5s cubic-bezier(.3,1.4,.5,1)}
+.lvName{margin:10px 0 0;font-family:var(--comic);font-size:26px;text-align:center}
+
+/* ---------- arena ---------- */
+.arena{position:relative;height:min(64vh,470px);margin-top:14px;overflow:hidden;touch-action:manipulation;
+  background:linear-gradient(#fff7ef 0 72%,#f1d7c4 72%);}
+.arena::before{content:'';position:absolute;left:0;right:0;top:72%;height:3px;background:var(--ink)}
+.ego{position:absolute;top:10px;left:12px;right:12px;z-index:5;display:flex;align-items:center;gap:8px;font-weight:700;font-size:12px}
+.ego .bar{flex:1;height:14px;border-radius:999px;border:2.5px solid var(--ink);background:#fff;overflow:hidden}
+.ego .bar i{display:block;height:100%;width:100%;background:#5fd39a;transition:width .35s,background .35s}
+.hits{position:absolute;top:32px;right:14px;z-index:5;font-family:var(--comic);font-size:20px}
+#nay{position:absolute;left:50%;top:22%;width:150px;margin-left:-75px;z-index:2;animation:sway 3.2s ease-in-out infinite}
+@keyframes sway{50%{transform:translateX(26px) rotate(3deg)}0%,100%{transform:translateX(-26px) rotate(-3deg)}}
+#nay.hit svg{animation:squish .4s}
+@keyframes squish{30%{transform:scale(1.15,.82) rotate(-6deg)}60%{transform:scale(.95,1.06) rotate(3deg)}}
+#nay.ko{animation:none;transform:rotate(80deg) translate(60px,-10px);transition:transform .6s cubic-bezier(.3,1.6,.5,1)}
+.say{position:absolute;left:50%;bottom:calc(100% + 6px);transform:translateX(-50%);width:max-content;max-width:min(240px,70vw);z-index:4}
+.mark{position:absolute;pointer-events:none}
+.proj{position:absolute;left:0;top:0;z-index:6;pointer-events:none;font-size:44px;line-height:1;will-change:transform}
+.pow{position:absolute;z-index:7;pointer-events:none;font-family:var(--comic);font-size:34px;color:#fff;-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;padding:10px 16px;background:var(--yolk);clip-path:polygon(50% 0,61% 22%,85% 8%,78% 34%,100% 42%,80% 58%,96% 82%,68% 74%,58% 100%,46% 78%,22% 94%,26% 68%,0 60%,20% 44%,4% 20%,32% 26%);animation:powIn .6s ease-out forwards}
+@keyframes powIn{0%{transform:scale(.2) rotate(-20deg)}40%{transform:scale(1.15) rotate(6deg)}100%{transform:scale(1) rotate(0);opacity:0}}
+.stuck{position:absolute;z-index:3;font-size:46px;transform:rotate(-120deg)}
+.tray{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;gap:8px;overflow-x:auto;padding:10px 12px 12px;scrollbar-width:none}
+.tray::-webkit-scrollbar{display:none}
+.item{flex:none;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:68px;padding:7px 6px 6px;border-radius:14px;background:#fff;border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.item .e{font-size:28px;line-height:1;height:30px;display:grid;place-items:center}
+.item small{font-size:10.5px;font-weight:700;white-space:nowrap}
+.item.on{background:var(--yolk);transform:translateY(-3px)}
+.item.locked{opacity:.35;filter:grayscale(1)}
+.tapHint{position:absolute;left:0;right:0;top:58%;text-align:center;z-index:4;font-weight:700;font-size:13px;opacity:.6;pointer-events:none}
+.over{position:absolute;inset:0;z-index:8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;text-align:center;background:rgba(255,244,234,.9)}
+.over b{font-family:var(--comic);font-size:34px;line-height:1}
+.over p{margin:0;font-weight:600;max-width:28ch}
+
+/* ---------- roast + excuses ---------- */
+.roast{padding:18px 16px;text-align:center}
+.roastLine{font-family:var(--hand);font-size:27px;line-height:1.2;min-height:70px;display:grid;place-items:center;margin:8px 0 12px}
+.excuse{position:relative;padding:16px;margin-top:12px;min-height:96px;display:flex;align-items:center;gap:12px}
+.excuse p{margin:0;flex:1;font-weight:600;font-size:15px;line-height:1.35}
+.stamp{position:absolute;right:14px;top:50%;font-family:var(--comic);font-size:30px;color:var(--hot);border:4px solid var(--hot);border-radius:8px;padding:2px 10px;transform:translateY(-50%) rotate(-14deg) scale(2);opacity:0;pointer-events:none}
+.stamp.show{animation:stamp .35s cubic-bezier(.3,1.6,.5,1) forwards}
+@keyframes stamp{to{transform:translateY(-50%) rotate(-14deg) scale(1);opacity:.9}}
+.foot{margin-top:34px;text-align:center;font-family:var(--hand);font-size:22px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body data-lv="1">
+
+<div id="lock" role="dialog" aria-modal="true">
+  <h1 class="title" style="font-size:48px">Angry at Nay?</h1>
+  <p style="margin:8px 0 0;font-weight:600">Enter the code first. Then you can throw things.</p>
+  <div class="dots" id="dots"><i></i><i></i><i></i><i></i></div>
+  <div class="msg" id="msg"></div>
+  <div class="pad" id="pad"></div>
+  <div style="margin-top:16px;display:flex;flex-direction:column;align-items:center;font-size:12px;font-weight:600">
+    <button id="hadesHint" aria-label="Hades gives a hint"></button><span>Hades · tap for hint</span><div id="hintOut" style="margin-top:6px"></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <h1 class="title" style="font-size:clamp(46px,14vw,64px);text-align:center">Angry at Nay</h1>
+  <p style="text-align:center;font-weight:600;margin:10px 0 0">What did he do this time? Never mind. Doesn't matter. Pick a level.</p>
+
+  <section>
+    <h2 class="h2">How mad are you?</h2>
+    <div class="levels" id="levels"></div>
+    <div class="meter" aria-hidden="true"><i id="meterFill"></i></div>
+    <p class="lvName" id="lvName"></p>
+  </section>
+
+  <section>
+    <h2 class="h2">Throw things at him</h2>
+    <p style="margin:4px 0 0;font-weight:500;font-size:14px">Pick something, then tap anywhere to throw. Madder levels unlock heavier things.</p>
+    <div class="arena box" id="arena">
+      <div class="ego"><span>Nafay's ego</span><div class="bar"><i id="egoBar"></i></div></div>
+      <div class="hits" id="hits">0 hits</div>
+      <div id="nay"><div class="say" id="naySay"></div><div id="naySvg"></div><div id="marks"></div></div>
+      <div class="tapHint" id="tapHint">tap to throw</div>
+      <div class="tray" id="tray"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="roast box">
+      <h2 class="h2">Roast him</h2>
+      <div class="roastLine" id="roastLine">He deserves this. Tap the button.</div>
+      <button class="btn pink" id="roastBtn">roast Nafay</button>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="h2">His excuses</h2>
+    <p style="margin:4px 0 0;font-weight:500;font-size:14px">Read them. Reject them.</p>
+    <div class="excuse box"><p id="excuse"></p><span class="stamp" id="stamp">REJECTED</span></div>
+    <div style="display:flex;gap:10px;margin-top:12px;justify-content:center"><button class="btn" id="reject">reject 🙅‍♀️</button><button class="btn pink" id="accept">fine, accept</button></div>
+  </section>
+
+  <p class="foot">Made by Nafay, who is very sorry and slightly scared.</p>
+</main>
+
+<script>
+const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const rand = (a, b) => a + Math.random() * (b - a), pick = a => a[Math.floor(Math.random() * a.length)];
+
+/* ---------- little sounds (made in code) ---------- */
+let AC;
+function sfx(kind) {
+  try {
+    AC = AC || new (window.AudioContext || window.webkitAudioContext)(); const t = AC.currentTime;
+    const o = AC.createOscillator(), g = AC.createGain(); o.connect(g); g.connect(AC.destination);
+    if (kind === 'whoosh') { o.type = 'sine'; o.frequency.setValueAtTime(700, t); o.frequency.exponentialRampToValueAtTime(220, t + .25); g.gain.setValueAtTime(.05, t); g.gain.exponentialRampToValueAtTime(.001, t + .25); o.start(t); o.stop(t + .26); }
+    else if (kind === 'thud') { o.type = 'triangle'; o.frequency.setValueAtTime(160, t); o.frequency.exponentialRampToValueAtTime(50, t + .2); g.gain.setValueAtTime(.35, t); g.gain.exponentialRampToValueAtTime(.001, t + .25); o.start(t); o.stop(t + .26); }
+    else if (kind === 'soft') { o.type = 'sine'; o.frequency.setValueAtTime(320, t); o.frequency.exponentialRampToValueAtTime(180, t + .15); g.gain.setValueAtTime(.12, t); g.gain.exponentialRampToValueAtTime(.001, t + .18); o.start(t); o.stop(t + .2); }
+    else if (kind === 'clang') { o.type = 'square'; o.frequency.setValueAtTime(880, t); g.gain.setValueAtTime(.08, t); g.gain.exponentialRampToValueAtTime(.001, t + .5); o.start(t); o.stop(t + .5); }
+    else if (kind === 'thunk') { o.type = 'sawtooth'; o.frequency.setValueAtTime(240, t); o.frequency.exponentialRampToValueAtTime(90, t + .08); g.gain.setValueAtTime(.12, t); g.gain.exponentialRampToValueAtTime(.001, t + .12); o.start(t); o.stop(t + .14); }
+  } catch (e) {}
+}
+
+/* ---------- Hades for the hint ---------- */
+const HADES = `<svg width="56" height="56" viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="50" cy="60" rx="30" ry="26" fill="#5b4d41"/><path d="M25 40 L15 15 L38 32 Z" fill="#3a3029"/><path d="M75 40 L85 15 L62 32 Z" fill="#7d6f62"/><path d="M52 32 C68 34 82 46 80 62 C72 60 62 56 56 46 Z" fill="#8a7a6b"/><ellipse cx="50" cy="68" rx="13" ry="9" fill="#a89886"/><path d="M50 34 L50 44 M42 36 L44 44 M58 36 L56 44" stroke="#2a2018" stroke-width="2.4" stroke-linecap="round"/><path d="M25 40 L20 22 L34 33 Z" fill="#e3bfb4"/><path d="M75 40 L80 22 L66 33 Z" fill="#e3bfb4"/><circle cx="38" cy="55" r="4.5" fill="#1b1410"/><circle cx="62" cy="55" r="4.5" fill="#1b1410"/><circle cx="39.6" cy="53.6" r="1.4" fill="#fff"/><circle cx="63.6" cy="53.6" r="1.4" fill="#fff"/><path d="M46 64 Q50 68 54 64" stroke="#122b1c" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="34" cy="60" r="4" fill="#ffb3cb" opacity=".7"/><circle cx="66" cy="60" r="4" fill="#ffb3cb" opacity=".7"/></svg>`;
+$('#hadesHint').innerHTML = HADES;
+
+/* ---------- PIN 1124 ---------- */
+(function () {
+  const lock = $('#lock'), dots = $('#dots'), pad = $('#pad');
+  let ok = false; try { ok = sessionStorage.getItem('angry:in') === '1'; } catch (e) {}
+  if (ok) { lock.remove(); return; }
+  document.body.style.overflow = 'hidden';
+  let code = '', busy = false, wrong = 0;
+  pad.innerHTML = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'].map(k => k ? `<button class="key" data-k="${k}" aria-label="${k === '⌫' ? 'delete' : k}">${k}</button>` : '<span></span>').join('');
+  const paint = () => $$('i', dots).forEach((d, i) => d.classList.toggle('on', i < code.length));
+  function press(k) {
+    if (busy) return; if (k === '⌫') code = code.slice(0, -1); else if (code.length < 4) code += k; paint();
+    if (code.length < 4) return; busy = true;
+    if (code === '1124') { dots.classList.add('good'); $('#msg').textContent = 'Okay. Go get him.'; try { sessionStorage.setItem('angry:in', '1'); } catch (e) {} setTimeout(() => { lock.remove(); document.body.style.overflow = ''; }, 500); }
+    else { wrong++; dots.classList.add('bad'); $('#msg').textContent = ['Wrong. Now you are mad at the code too.', 'Nope. Breathe.', 'Still no. Ask Hades.'][(wrong - 1) % 3]; setTimeout(() => { dots.classList.remove('bad'); code = ''; paint(); busy = false; }, 450); }
+  }
+  pad.onclick = e => { const b = e.target.closest('.key'); if (b) press(b.dataset.k); };
+  addEventListener('keydown', e => { if (!lock.isConnected) return; if (/^[0-9]$/.test(e.key)) press(e.key); else if (e.key === 'Backspace') press('⌫'); });
+  const H = ['Hint: two birthdays, squished into one code. 🎂', 'Just the days, princess. His first, then yours.']; let h = 0;
+  $('#hadesHint').onclick = () => { $('#hintOut').innerHTML = `<div class="bubble">${H[h++ % H.length]}</div>`; };
+})();
+
+/* ---------- Nafay, the target ---------- */
+function naySvg(face) {
+  const eyes = {
+    calm: '<circle cx="42" cy="58" r="4" fill="#2b0f1e"/><circle cx="62" cy="58" r="4" fill="#2b0f1e"/>',
+    scared: '<circle cx="42" cy="58" r="6" fill="#fff" stroke="#2b0f1e" stroke-width="2"/><circle cx="42" cy="59" r="2.6" fill="#2b0f1e"/><circle cx="62" cy="58" r="6" fill="#fff" stroke="#2b0f1e" stroke-width="2"/><circle cx="62" cy="59" r="2.6" fill="#2b0f1e"/>',
+    hurt: '<path d="M37 53 L47 63 M47 53 L37 63 M57 53 L67 63 M67 53 L57 63" stroke="#2b0f1e" stroke-width="3" stroke-linecap="round"/>',
+    sorry: '<path d="M37 59 Q42 54 47 59 M57 59 Q62 54 67 59" stroke="#2b0f1e" stroke-width="3" fill="none" stroke-linecap="round"/>'
+  }[face];
+  const mouth = { calm: '<path d="M45 72 Q52 77 59 72" stroke="#2b0f1e" stroke-width="3" fill="none" stroke-linecap="round"/>', scared: '<ellipse cx="52" cy="74" rx="5" ry="6" fill="#2b0f1e"/>', hurt: '<path d="M44 76 Q48 70 52 76 Q56 70 60 76" stroke="#2b0f1e" stroke-width="3" fill="none" stroke-linecap="round"/>', sorry: '<path d="M45 76 Q52 71 59 76" stroke="#2b0f1e" stroke-width="3" fill="none" stroke-linecap="round"/>' }[face];
+  return `<svg viewBox="0 0 104 170" width="150" aria-label="Nafay">
+    <path d="M24 112 Q52 96 80 112 L86 166 L18 166 Z" fill="#3b4f8a" stroke="#2b0f1e" stroke-width="3"/>
+    <rect x="44" y="92" width="16" height="16" fill="#e9b48f" stroke="#2b0f1e" stroke-width="3"/>
+    <ellipse cx="52" cy="62" rx="31" ry="34" fill="#f2c4a0" stroke="#2b0f1e" stroke-width="3"/>
+    <path d="M21 58 Q18 24 50 22 Q86 20 84 56 Q76 40 62 38 Q58 46 46 40 Q34 46 24 44 Z" fill="#2b1a16" stroke="#2b0f1e" stroke-width="3" stroke-linejoin="round"/>
+    <ellipse cx="20" cy="64" rx="5" ry="8" fill="#f2c4a0" stroke="#2b0f1e" stroke-width="3"/><ellipse cx="84" cy="64" rx="5" ry="8" fill="#f2c4a0" stroke="#2b0f1e" stroke-width="3"/>
+    <circle cx="34" cy="70" r="5" fill="#ff9fb4" opacity=".6"/><circle cx="70" cy="70" r="5" fill="#ff9fb4" opacity=".6"/>
+    ${eyes}${mouth}
+    ${face === 'scared' ? '<path d="M80 40 q4 8 0 12 q-4 -4 0 -12" fill="#7fd0ff" stroke="#2b0f1e" stroke-width="1.5"/>' : ''}
+  </svg>`;
+}
+let face = 'calm'; function setFace(f) { face = f; $('#naySvg').innerHTML = naySvg(f); }
+setFace('calm');
+
+/* ---------- levels and weapons ---------- */
+const PILLOW = '<svg width="34" height="26" viewBox="0 0 34 26"><path d="M3 5 Q17 0 31 5 Q34 13 31 21 Q17 26 3 21 Q0 13 3 5Z" fill="#fff" stroke="#2b0f1e" stroke-width="2.4"/><path d="M8 9 Q17 7 26 9" stroke="#f0c8d6" stroke-width="2" fill="none"/></svg>';
+const BELAN = '<svg width="40" height="16" viewBox="0 0 40 16"><rect x="0" y="5" width="7" height="6" rx="3" fill="#c98a52" stroke="#2b0f1e" stroke-width="2"/><rect x="33" y="5" width="7" height="6" rx="3" fill="#c98a52" stroke="#2b0f1e" stroke-width="2"/><rect x="6" y="2" width="28" height="12" rx="6" fill="#e8b47a" stroke="#2b0f1e" stroke-width="2.4"/></svg>';
+const LEVELS = [
+  { e: '😒', name: 'a lil annoyed', title: 'Slightly annoyed. He can still be saved.' },
+  { e: '😤', name: 'mad', title: 'Mad. He knows what he did.' },
+  { e: '😠', name: 'very mad', title: 'Very mad. Do not text her "hmm".' },
+  { e: '🤬', name: 'furious', title: 'Furious. Hades has left the room.' },
+  { e: '🌋', name: "don't talk to me", title: "Don't talk to her. Run, Nafay." }
+];
+const WEAPONS = [
+  { lv: 1, name: 'pillow', icon: PILLOW, dmg: 3, snd: 'soft', pow: 'FLUMP' },
+  { lv: 1, name: 'teddy', icon: '🧸', dmg: 3, snd: 'soft', pow: 'BOOF' },
+  { lv: 1, name: 'paper ball', icon: '📄', dmg: 2, snd: 'soft', pow: 'PAP' },
+  { lv: 2, name: 'chappal', icon: '🩴', dmg: 6, snd: 'thud', pow: 'THWACK' },
+  { lv: 2, name: 'tomato', icon: '🍅', dmg: 6, snd: 'soft', pow: 'SPLAT', mark: '#e8343f' },
+  { lv: 2, name: 'water balloon', icon: '🎈', dmg: 5, snd: 'soft', pow: 'SPLOOSH', mark: '#7fd0ff' },
+  { lv: 3, name: 'shoe', icon: '👟', dmg: 9, snd: 'thud', pow: 'BONK' },
+  { lv: 3, name: 'belan', icon: BELAN, dmg: 11, snd: 'thud', pow: 'DHUSH' },
+  { lv: 3, name: 'egg', icon: '🥚', dmg: 8, snd: 'soft', pow: 'CRACK', mark: '#ffd23f' },
+  { lv: 4, name: 'frying pan', icon: '🍳', dmg: 15, snd: 'clang', pow: 'CLANG' },
+  { lv: 4, name: 'stone', icon: '🪨', dmg: 15, snd: 'thud', pow: 'DONK' },
+  { lv: 4, name: 'physics book', icon: '📚', dmg: 14, snd: 'thud', pow: 'WHAM' },
+  { lv: 5, name: 'brick', icon: '🧱', dmg: 22, snd: 'thud', pow: 'KABOOM' },
+  { lv: 5, name: 'bowling ball', icon: '🎳', dmg: 24, snd: 'thud', pow: 'STRIKE' },
+  { lv: 5, name: 'knife', icon: '🔪', dmg: 0, snd: 'thunk', pow: 'THUNK', knife: true }
+];
+const SAYS = {
+  1: ['ow. that was soft. like you.', 'okay okay, I deserved that one', 'is this a pillow fight or are you mad', "that didn't hurt. emotionally it did."],
+  2: ['OUCH. the chappal. classic.', 'okay you are actually mad', 'I said sorry in my head, does that count', 'please, not the face'],
+  3: ['the BELAN?? who taught you that', 'I am sorry, princess, I am so sorry', 'my ego is in danger', 'I will never do it again. whatever it was.'],
+  4: ['I can see stars. and they look like you.', 'calling Hades for backup... he declined', 'I take back everything I said', 'this is fair. this is very fair.'],
+  5: ['I SURRENDER', 'tell Percy I loved him', "I'm sorry I'm sorry I'm sorry", 'my last words: you look pretty when you are mad']
+};
+const KNIFE = ['she MISSED. on purpose. right?? RIGHT??', 'that was too close, princess', 'okay I will never argue again', 'I felt the wind of that one'];
+let level = 1, sel = 0, ego = 100, hits = 0, ko = false;
+
+function drawLevels() {
+  $('#levels').innerHTML = LEVELS.map((l, i) => `<button class="lv ${i + 1 === level ? 'on' : ''}" data-l="${i + 1}"><span class="e">${l.e}</span><small>${l.name}</small></button>`).join('');
+  $('#meterFill').style.width = level * 20 + '%'; $('#lvName').textContent = LEVELS[level - 1].title; document.body.dataset.lv = level;
+  if (!ko) setFace(level >= 4 ? 'scared' : 'calm');
+}
+$('#levels').onclick = e => { const b = e.target.closest('.lv'); if (!b) return; level = +b.dataset.l; drawLevels(); drawTray();
+  const best = WEAPONS.map((w, i) => [w, i]).filter(([w]) => w.lv === level)[0]; if (best) { sel = best[1]; drawTray(); } };
+
+function drawTray() {
+  $('#tray').innerHTML = WEAPONS.map((w, i) => `<button class="item ${i === sel ? 'on' : ''} ${w.lv > level ? 'locked' : ''}" data-i="${i}" ${w.lv > level ? 'aria-disabled="true"' : ''}><span class="e">${w.icon}</span><small>${w.lv > level ? '🔒 lvl ' + w.lv : w.name}</small></button>`).join('');
+}
+$('#tray').onclick = e => { e.stopPropagation(); const b = e.target.closest('.item'); if (!b) return; const w = WEAPONS[+b.dataset.i];
+  if (w.lv > level) { b.animate([{ transform: 'translateX(-5px)' }, { transform: 'translateX(5px)' }, { transform: 'none' }], { duration: 250 }); say(`not mad enough for the ${w.name} yet`); return; }
+  sel = +b.dataset.i; drawTray(); };
+
+function say(t) { $('#naySay').innerHTML = `<div class="bubble">${t}</div>`; clearTimeout(say.t); say.t = setTimeout(() => $('#naySay').innerHTML = '', 2400); }
+
+/* ---------- throwing ---------- */
+$('#arena').addEventListener('click', e => {
+  if (ko || e.target.closest('.tray,.over')) return;
+  const w = WEAPONS[sel]; if (w.lv > level) return;
+  $('#tapHint').classList.add('hidden');
+  const A = $('#arena').getBoundingClientRect(), N = $('#nay').getBoundingClientRect();
+  const sx = e.clientX - A.left, sy = A.height - 70;
+  let tx = N.left - A.left + N.width / 2 + rand(-18, 18), ty = N.top - A.top + 60 + rand(-14, 14);
+  if (w.knife) { tx += (Math.random() < .5 ? -1 : 1) * 62; ty -= 18; }
+  const p = document.createElement('div'); p.className = 'proj'; p.innerHTML = w.icon; $('#arena').appendChild(p);
+  const peak = Math.min(sy, ty) - 90, frames = [];
+  for (let k = 0; k <= 12; k++) { const t = k / 12, x = sx + (tx - sx) * t, y = (1 - t) * (1 - t) * sy + 2 * (1 - t) * t * peak + t * t * ty; frames.push({ transform: `translate(${x - 22}px,${y - 22}px) rotate(${t * (w.knife ? 900 : 540)}deg) scale(${1.2 - t * .35})` }); }
+  sfx('whoosh');
+  p.animate(frames, { duration: 520, easing: 'linear', fill: 'forwards' }).onfinish = () => { p.remove(); impact(w, tx, ty); };
+});
+
+function impact(w, x, y) {
+  const A = $('#arena');
+  const pow = document.createElement('div'); pow.className = 'pow'; pow.textContent = w.pow + '!'; pow.style.left = x - 60 + 'px'; pow.style.top = y - 50 + 'px'; A.appendChild(pow); setTimeout(() => pow.remove(), 650);
+  sfx(w.snd); if (navigator.vibrate) try { navigator.vibrate(w.dmg > 12 ? 40 : 15); } catch (e) {}
+  if (w.knife) {
+    const k = document.createElement('div'); k.className = 'stuck'; k.textContent = '🔪'; k.style.left = x - 22 + 'px'; k.style.top = y - 30 + 'px'; A.appendChild(k);
+    if ($$('.stuck', A).length > 4) $('.stuck', A).remove();
+    setFace('scared'); say(pick(KNIFE)); return;
+  }
+  hits++; $('#hits').textContent = hits + (hits === 1 ? ' hit' : ' hits');
+  ego = Math.max(0, ego - w.dmg);
+  $('#egoBar').style.width = ego + '%'; $('#egoBar').style.background = ego > 60 ? '#5fd39a' : ego > 30 ? '#ffd23f' : '#ff3b5c';
+  const n = $('#nay'); n.classList.remove('hit'); void n.offsetWidth; n.classList.add('hit');
+  setFace('hurt'); setTimeout(() => { if (!ko) setFace(level >= 4 ? 'scared' : 'calm'); }, 700);
+  if (w.mark || Math.random() < .5) {
+    const m = document.createElement('div'); m.className = 'mark';
+    if (w.mark) m.innerHTML = `<svg width="34" height="30" viewBox="0 0 34 30"><path d="M17 2 Q22 9 30 6 Q26 14 33 18 Q24 19 25 28 Q18 22 11 28 Q12 19 2 18 Q9 13 5 5 Q12 8 17 2Z" fill="${w.mark}" stroke="#2b0f1e" stroke-width="1.5" opacity=".9"/></svg>`;
+    else m.innerHTML = '<svg width="26" height="12" viewBox="0 0 26 12"><rect x="1" y="1" width="24" height="10" rx="4" fill="#f5d3a8" stroke="#2b0f1e" stroke-width="1.5"/><rect x="9" y="1" width="8" height="10" fill="#e8bf8f"/></svg>';
+    m.style.left = rand(28, 92) + 'px'; m.style.top = rand(28, 90) + 'px'; m.style.transform = `rotate(${rand(-40, 40)}deg)`; $('#marks').appendChild(m);
+    if ($$('.mark').length > 7) $('.mark').remove();
+  }
+  say(pick(SAYS[w.lv]));
+  if (ego <= 0) knockout();
+}
+
+function knockout() {
+  ko = true; setFace('hurt'); $('#nay').classList.add('ko'); say('...');
+  setTimeout(() => {
+    const o = document.createElement('div'); o.className = 'over';
+    o.innerHTML = `<b>K.O.</b><span style="font-size:44px">🏳️</span><p>Nafay has surrendered after ${hits} hits.<br>He says: "I'm sorry, princess. Truly. You win. You always win."</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn pink" id="forgive">forgive him</button><button class="btn" id="again">still mad. again.</button></div>`;
+    $('#arena').appendChild(o);
+    $('#again', o).onclick = e => { e.stopPropagation(); reset(); };
+    $('#forgive', o).onclick = e => {
+      e.stopPropagation();
+      o.innerHTML = `<span style="font-size:52px">🌷</span><b>Forgiven</b><p>He's doing a little happy dance. He promises to be better. (He will still be annoying sometimes. You knew that.)</p><button class="btn" id="again2">start over</button>`;
+      $('#again2', o).onclick = ev => { ev.stopPropagation(); level = 1; drawLevels(); reset(); };
+    };
+  }, 900);
+}
+function reset() {
+  ko = false; ego = 100; hits = 0; $('#hits').textContent = '0 hits'; $('#egoBar').style.width = '100%'; $('#egoBar').style.background = '#5fd39a';
+  $('#nay').classList.remove('ko'); $('#marks').innerHTML = ''; $$('.stuck,.over').forEach(x => x.remove()); setFace(level >= 4 ? 'scared' : 'calm'); drawTray();
+}
+drawLevels(); drawTray();
+
+/* ---------- roast ---------- */
+const ROASTS = [
+  "Nafay's jokes: 10% funny, 90% him laughing at them.",
+  'He says "I\'ll sleep early." He has never once slept early.',
+  'He thinks he is mysterious. He is not. He is very readable.',
+  'Hades respects Nafay less than he respects the vacuum cleaner.',
+  'He types "hahaha" with a completely straight face.',
+  'He talks so loud the neighbours know your business.',
+  'He says "two minutes" and means forty.',
+  'Nafay running a business: impressive. Nafay understanding a hint: never.',
+  'He says "I\'m not mad" in the most mad voice possible.',
+  'He thinks he is always right. He has been right maybe twice.',
+  'He will overthink one text for an hour and then send "ok".',
+  'Percy has more chill than him.',
+  'He laughs at his own jokes before he finishes telling them.',
+  'He calls himself smart. He forgot what he did wrong already.',
+  'He is lucky you are this pretty, because his excuses are not.'
+];
+let ri = Math.floor(Math.random() * ROASTS.length);
+$('#roastBtn').onclick = () => { const l = $('#roastLine'); l.animate([{ transform: 'scale(.8) rotate(-3deg)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 300, easing: 'cubic-bezier(.3,1.6,.5,1)' }); l.textContent = ROASTS[ri++ % ROASTS.length]; };
+
+/* ---------- excuses ---------- */
+const EXCUSES = [
+  'My phone was on silent. For six hours. By accident.',
+  'I was going to reply but then I fell asleep at 4am. Very responsible.',
+  "I didn't mean it like that. I meant it in a different, better way.",
+  'Technically I was right, but I am choosing peace. Please choose peace.',
+  'It was Percy. Percy typed that message.',
+  'I was busy with work. Work is not prettier than you though. Bad excuse.',
+  'I forgot, but only because my brain was full of thoughts about you.',
+  "I said 'hmm' because I was thinking. Deeply. About you.",
+  'The internet was bad. In my head.',
+  'I am sorry. That is not an excuse. That is just the truth.'
+];
+let ei = 0; $('#excuse').textContent = EXCUSES[0];
+function nextExcuse() { ei = (ei + 1) % EXCUSES.length; const s = $('#stamp'); s.classList.remove('show'); s.textContent = 'REJECTED'; s.style.color = s.style.borderColor = ''; $('#excuse').textContent = EXCUSES[ei]; }
+$('#reject').onclick = () => { const s = $('#stamp'); s.classList.remove('show'); void s.offsetWidth; s.classList.add('show'); sfx('thud'); setTimeout(nextExcuse, 1100); };
+$('#accept').onclick = () => { const s = $('#stamp'); s.textContent = 'FINE.'; s.style.color = s.style.borderColor = '#2fa86b'; s.classList.remove('show'); void s.offsetWidth; s.classList.add('show'); sfx('soft'); setTimeout(nextExcuse, 1300); };
+</script>
+</body>
+</html>
