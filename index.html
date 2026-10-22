@@ -256,21 +256,29 @@ $('#hadesHint').innerHTML = HADES;
 /* ---------- Nafay, the target ---------- */
 function naySvg(face) {
   const eyes = {
-    calm: '<circle cx="42" cy="58" r="4" fill="#2b0f1e"/><circle cx="62" cy="58" r="4" fill="#2b0f1e"/>',
-    scared: '<circle cx="42" cy="58" r="6" fill="#fff" stroke="#2b0f1e" stroke-width="2"/><circle cx="42" cy="59" r="2.6" fill="#2b0f1e"/><circle cx="62" cy="58" r="6" fill="#fff" stroke="#2b0f1e" stroke-width="2"/><circle cx="62" cy="59" r="2.6" fill="#2b0f1e"/>',
-    hurt: '<path d="M37 53 L47 63 M47 53 L37 63 M57 53 L67 63 M67 53 L57 63" stroke="#2b0f1e" stroke-width="3" stroke-linecap="round"/>',
-    sorry: '<path d="M37 59 Q42 54 47 59 M57 59 Q62 54 67 59" stroke="#2b0f1e" stroke-width="3" fill="none" stroke-linecap="round"/>'
+    calm: '<circle cx="40.5" cy="59.5" r="3.6" fill="#2b0f1e"/><circle cx="64.5" cy="59.5" r="3.6" fill="#2b0f1e"/>',
+    scared: '<circle cx="40.5" cy="59.5" r="5" fill="#fff" stroke="#2b0f1e" stroke-width="2"/><circle cx="40.5" cy="60.5" r="2.2" fill="#2b0f1e"/><circle cx="64.5" cy="59.5" r="5" fill="#fff" stroke="#2b0f1e" stroke-width="2"/><circle cx="64.5" cy="60.5" r="2.2" fill="#2b0f1e"/>',
+    hurt: '<path d="M36.5 55.5 L44.5 63.5 M44.5 55.5 L36.5 63.5 M60.5 55.5 L68.5 63.5 M68.5 55.5 L60.5 63.5" stroke="#2b0f1e" stroke-width="2.6" stroke-linecap="round"/>',
+    sorry: '<path d="M36 61 Q40.5 56 45 61 M60 61 Q64.5 56 69 61" stroke="#2b0f1e" stroke-width="2.6" fill="none" stroke-linecap="round"/>'
   }[face];
   const mouth = { calm: '<path d="M45 72 Q52 77 59 72" stroke="#2b0f1e" stroke-width="3" fill="none" stroke-linecap="round"/>', scared: '<ellipse cx="52" cy="74" rx="5" ry="6" fill="#2b0f1e"/>', hurt: '<path d="M44 76 Q48 70 52 76 Q56 70 60 76" stroke="#2b0f1e" stroke-width="3" fill="none" stroke-linecap="round"/>', sorry: '<path d="M45 76 Q52 71 59 76" stroke="#2b0f1e" stroke-width="3" fill="none" stroke-linecap="round"/>' }[face];
   return `<svg viewBox="0 0 104 170" width="150" aria-label="Nafay">
-    <path d="M24 112 Q52 96 80 112 L86 166 L18 166 Z" fill="#3b4f8a" stroke="#2b0f1e" stroke-width="3"/>
-    <rect x="44" y="92" width="16" height="16" fill="#e9b48f" stroke="#2b0f1e" stroke-width="3"/>
-    <ellipse cx="52" cy="62" rx="31" ry="34" fill="#f2c4a0" stroke="#2b0f1e" stroke-width="3"/>
-    <path d="M21 58 Q18 24 50 22 Q86 20 84 56 Q76 40 62 38 Q58 46 46 40 Q34 46 24 44 Z" fill="#2b1a16" stroke="#2b0f1e" stroke-width="3" stroke-linejoin="round"/>
-    <ellipse cx="20" cy="64" rx="5" ry="8" fill="#f2c4a0" stroke="#2b0f1e" stroke-width="3"/><ellipse cx="84" cy="64" rx="5" ry="8" fill="#f2c4a0" stroke="#2b0f1e" stroke-width="3"/>
-    <circle cx="34" cy="70" r="5" fill="#ff9fb4" opacity=".6"/><circle cx="70" cy="70" r="5" fill="#ff9fb4" opacity=".6"/>
+    <path d="M14 166 Q16 116 52 108 Q88 116 90 166 Z" fill="#c9c7c4" stroke="#2b0f1e" stroke-width="3"/>
+    <path d="M30 116 Q52 140 74 116 Q72 104 52 102 Q32 104 30 116Z" fill="#b3b0ac" stroke="#2b0f1e" stroke-width="2.5"/>
+    <path d="M38 112 Q52 128 66 112" fill="#d9c2b0" stroke="#2b0f1e" stroke-width="2"/>
+    <path d="M42 124 L39 150 M62 124 L65 150" stroke="#2b0f1e" stroke-width="2.4" stroke-linecap="round"/>
+    <rect x="35.5" y="146" width="6" height="11" rx="2" fill="#fff" stroke="#2b0f1e" stroke-width="2"/><rect x="62.5" y="146" width="6" height="11" rx="2" fill="#fff" stroke="#2b0f1e" stroke-width="2"/>
+    <rect x="45" y="92" width="14" height="16" fill="#e2b493" stroke="#2b0f1e" stroke-width="3"/>
+    <ellipse cx="20" cy="66" rx="5" ry="8" fill="#ecbf9c" stroke="#2b0f1e" stroke-width="3"/><ellipse cx="84" cy="66" rx="5" ry="8" fill="#ecbf9c" stroke="#2b0f1e" stroke-width="3"/>
+    <ellipse cx="52" cy="63" rx="31" ry="34" fill="#ecbf9c" stroke="#2b0f1e" stroke-width="3"/>
+    <circle cx="33" cy="74" r="5" fill="#ff9fb4" opacity=".55"/><circle cx="71" cy="74" r="5" fill="#ff9fb4" opacity=".55"/>
     ${eyes}${mouth}
-    ${face === 'scared' ? '<path d="M80 40 q4 8 0 12 q-4 -4 0 -12" fill="#7fd0ff" stroke="#2b0f1e" stroke-width="1.5"/>' : ''}
+    <path d="M17 66 Q12 40 26 26 Q40 12 58 14 Q80 15 88 34 Q94 50 87 66 L83 56 L80 49 L75 53 L71 47 L66 52 L61 46 L56 52 L51 46 L46 52 L41 47 L36 53 L31 48 L27 55 L22 52 Z" fill="#1d1614" stroke="#2b0f1e" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M40 24 Q48 20 56 22 M30 32 Q36 27 42 27" stroke="#4a3a34" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M58 13 Q61 6 66 4" stroke="#1d1614" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <g fill="rgba(220,235,255,.18)" stroke="#9aa3ad" stroke-width="2"><rect x="31" y="53" width="19" height="13" rx="4"/><rect x="55" y="53" width="19" height="13" rx="4"/></g>
+    <path d="M50 58 Q52.5 56 55 58 M31 57 L22 55 M74 57 L83 55" stroke="#9aa3ad" stroke-width="2" fill="none"/>
+    ${face === 'scared' ? '<path d="M84 34 q4 8 0 12 q-4 -4 0 -12" fill="#7fd0ff" stroke="#2b0f1e" stroke-width="1.5"/>' : ''}
   </svg>`;
 }
 let face = 'calm'; function setFace(f) { face = f; $('#naySvg').innerHTML = naySvg(f); }
